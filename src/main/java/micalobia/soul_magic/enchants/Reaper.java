@@ -20,9 +20,4 @@ public class Reaper extends Enchantment {
     public int getMaxLevel() {
         return 3;
     }
-
-    @Override
-    public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        // TODO: Add some soul mechanics, kinda like Fortune III
-    }
 }

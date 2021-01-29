@@ -1,10 +1,16 @@
 package micalobia.soul_magic.enchants;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
+import micalobia.soul_magic.PlayerEntityExtension;
+import micalobia.soul_magic.SoulMagic;
+import net.minecraft.enchantment.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.item.ItemStack;
+
+import java.util.Map;
+import java.util.Random;
 
 public class SoulSpite extends Enchantment {
     public SoulSpite() {
@@ -31,8 +37,19 @@ public class SoulSpite extends Enchantment {
     }
 
     @Override
-    public void onTargetDamaged(LivingEntity user, Entity target, int level)
-    {
-        // TODO: Do Lifesteal stuff
+    public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
+        if (shouldDamageAttacker(level, user.getRandom())) {
+            if (attacker != null) {
+                attacker.damage(DamageSource.thorns(user), (float)getDamageAmount(level));
+                ((PlayerEntityExtension)(Object)user).takeSouls(level);
+            }
+        }
     }
+
+    private int getDamageAmount(int level) {
+        return level + 1;
+    }
+
+    private boolean shouldDamageAttacker(int level, Random rng) { return rng.nextFloat() < level * .15F; }
+
 }
