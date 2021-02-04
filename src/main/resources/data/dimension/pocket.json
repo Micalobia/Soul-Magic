@@ -1,0 +1,25 @@
+{
+  "type":"datamod:pocket",
+  "generator":{
+    "type":"minecraft:flat",
+    "settings":{
+      "layers":[
+        {
+          "height":1,
+          "block":"minecraft:void_air"
+        }
+      ],
+      "biome":"minecraft:the_void",
+      "lakes":false,
+      "features":false,
+      "structures":{
+        "stronghold":{
+          "distance":0,
+          "count":0,
+          "spread":0
+        },
+        "structures":{}
+      }
+    }
+  }
+}
