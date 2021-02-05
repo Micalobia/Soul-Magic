@@ -1,4 +1,4 @@
-package micalobia.soul_magic.enchants;
+package micalobia.soul_magic.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
