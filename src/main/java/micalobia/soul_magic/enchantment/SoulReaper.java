@@ -1,10 +1,8 @@
-package micalobia.soul_magic.enchants;
+package micalobia.soul_magic.enchantment;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 
 public class SoulReaper extends Enchantment {
     public SoulReaper() {

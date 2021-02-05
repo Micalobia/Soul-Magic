@@ -1,16 +1,11 @@
 package micalobia.soul_magic;
 
-import micalobia.soul_magic.enchants.SoulReaper;
-import micalobia.soul_magic.enchants.SoulCollector;
-import micalobia.soul_magic.enchants.SoulSpite;
+import micalobia.soul_magic.enchantment.SoulReaper;
+import micalobia.soul_magic.enchantment.SoulCollector;
+import micalobia.soul_magic.enchantment.SoulSpite;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Material;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.network.MessageType;
 import net.minecraft.text.LiteralText;
 import net.minecraft.util.Identifier;

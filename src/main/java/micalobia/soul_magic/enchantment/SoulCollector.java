@@ -1,13 +1,8 @@
-package micalobia.soul_magic.enchants;
+package micalobia.soul_magic.enchantment;
 
-import micalobia.soul_magic.PlayerEntityExtension;
-import micalobia.soul_magic.SoulMagic;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 
 public class SoulCollector extends Enchantment {
     public SoulCollector()

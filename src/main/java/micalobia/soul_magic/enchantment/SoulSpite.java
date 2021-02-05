@@ -1,15 +1,12 @@
-package micalobia.soul_magic.enchants;
+package micalobia.soul_magic.enchantment;
 
 import micalobia.soul_magic.PlayerEntityExtension;
-import micalobia.soul_magic.SoulMagic;
 import net.minecraft.enchantment.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.item.ItemStack;
 
-import java.util.Map;
 import java.util.Random;
 
 public class SoulSpite extends Enchantment {
