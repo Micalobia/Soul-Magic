@@ -50,6 +50,6 @@ public class SoulSpite extends Enchantment {
         return level + 1;
     }
 
-    private boolean shouldDamageAttacker(int level, Random rng) { return rng.nextFloat() < level * .15F; }
+    private boolean shouldDamageAttacker(int level, Random rng) { return rng.nextFloat() < level * .10F; }
 
 }

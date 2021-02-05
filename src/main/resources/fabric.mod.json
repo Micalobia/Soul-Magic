@@ -20,11 +20,19 @@
   "entrypoints": {
     "main": [
       "micalobia.soul_magic.SoulMagic"
+    ],
+    "cardinal-components": [
+      "micalobia.soul_magic.components.Components"
     ]
   },
   "mixins": [
     "soul_magic.mixins.json"
   ],
+  "custom": {
+    "cardinal-components": [
+      "soul_magic:souls"
+    ]
+  },
 
   "depends": {
     "fabricloader": ">=0.7.4",

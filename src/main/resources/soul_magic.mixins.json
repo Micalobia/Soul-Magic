@@ -4,6 +4,7 @@
   "package": "micalobia.soul_magic.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "InGameHudMixin",
     "PlayerEntityMixin"
   ],
   "client": [

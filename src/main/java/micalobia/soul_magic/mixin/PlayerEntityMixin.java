@@ -2,9 +2,11 @@ package micalobia.soul_magic.mixin;
 
 import micalobia.soul_magic.PlayerEntityExtension;
 import micalobia.soul_magic.SoulMagic;
+import micalobia.soul_magic.components.Components;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -24,7 +26,7 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     @Shadow
     @Final
     public PlayerInventory inventory;
-    private int soulCount;
+    private PlayerInventory soulboundInventory;
     private float incomingSouls;
 
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
@@ -32,19 +34,24 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     }
 
     public int getSoulCount() {
-        return soulCount;
+        return Components.getSoulCount(this);
     }
 
     public void setSoulCount(int value) {
-        soulCount = value;
+        int max = getSoulMax();
+        Components.setSoulCount(this, Math.min(value, max));
+    }
+
+    public int getSoulMax() {
+        return 200;
     }
 
     public void addSouls(int value) {
-        soulCount += value;
+        setSoulCount(getSoulCount() + value);
     }
 
     public void addSouls() {
-        soulCount += (int) Math.ceil(incomingSouls);
+        addSouls((int) Math.ceil(incomingSouls));
         incomingSouls = 0;
     }
 
@@ -57,15 +64,16 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     }
 
     public void takeSouls(int value) {
+        int soulCount = Components.getSoulCount(this);
         soulCount -= value;
         if (soulCount < 0) soulCount = 0;
+        Components.setSoulCount(this, soulCount);
     }
 
     private void calculateSouls(LivingEntity victim) {
         calculateSoulCollector();
         calculateSoulReaper();
-        soulCount += (int) Math.ceil(incomingSouls);
-        incomingSouls = 0;
+        addSouls();
     }
 
     private void calculateSoulCollector() {
@@ -96,5 +104,15 @@ public abstract class PlayerEntityMixin extends LivingEntity implements PlayerEn
     @Inject(method = "onKilledOther", at = @At("HEAD"))
     public void onKilledOther(ServerWorld serverWorld, LivingEntity target, CallbackInfo info) {
         calculateSouls(target);
+    }
+
+    @Inject(method = "onDeath", at = @At("HEAD"))
+    public void preDeath(DamageSource source, CallbackInfo info) {
+
+    }
+
+    @Inject(method = "onDeath", at = @At("TAIL"))
+    public void postDeath(DamageSource source, CallbackInfo info) {
+
     }
 }
